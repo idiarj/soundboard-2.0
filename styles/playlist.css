@@ -1,0 +1,11 @@
+.songsContainer{
+    display: grid;
+    visibility: hidden;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    border: 1px solid #000;
+}
+
+.show{
+    visibility: visible;
+}
