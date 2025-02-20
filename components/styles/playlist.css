@@ -1,5 +1,5 @@
 .songsContainer{
-    display: grid;
+    display: none;
     visibility: hidden;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
@@ -7,5 +7,10 @@
 }
 
 .show{
+    display: grid;
     visibility: visible;
+}
+
+.playlistButton{
+    position: relative;
 }
