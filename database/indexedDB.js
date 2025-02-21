@@ -16,7 +16,7 @@ export class indexedDB {
                 }
             });
         } catch (error) {
-            //console.error('Error initializing the database', error);
+            ////console.error('Error initializing the database', error);
             throw error;
         }
     }
@@ -25,9 +25,9 @@ export class indexedDB {
         try {
             await this.initPromise;
             await this.db.add(store, data);
-            //console.log('Record added to the database');
+            ////console.log('Record added to the database');
         } catch (error) {
-            //console.error('Error adding record to the database', error);
+            ////console.error('Error adding record to the database', error);
             throw error;
         }
     }
@@ -37,7 +37,7 @@ export class indexedDB {
             await this.initPromise;
             return await this.db.getAll(store);
         } catch (error) {
-            //console.error('Error getting records from the database', error);
+            ////console.error('Error getting records from the database', error);
             throw error;
         }
     }
@@ -47,7 +47,7 @@ export class indexedDB {
             await this.initPromise;
             await this.db.delete(store, recordName);
         } catch (error) {
-            //console.error('Error deleting record from the database', error);
+            ////console.error('Error deleting record from the database', error);
             throw error;
         }
     }
@@ -57,7 +57,7 @@ export class indexedDB {
             await this.initPromise;
             return await this.db.get(store, id);            
         } catch (error) {
-            //console.error('Error getting record by id from the database', error);
+            ////console.error('Error getting record by id from the database', error);
             throw error;
         }
     }
@@ -66,9 +66,9 @@ export class indexedDB {
         try {
             await this.initPromise;
             await this.db.put(store, data);
-            //console.log('Record updated in the database');
+            ////console.log('Record updated in the database');
         } catch (error) {
-            //console.error('Error updating record in the database', error);
+            ////console.error('Error updating record in the database', error);
             throw error;
         }
     }

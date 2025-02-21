@@ -22,7 +22,8 @@ class TopBar extends HTMLElement {
                     <button id="changeWallpaperButton">Change wallpaper</button>
                 </div>
                 <div class="buttonContainer">
-                    <button id="importJson">Import playlist (as JSON)</button>
+                    <label for="importJson" class="styledButton">Import playlist (as JSON)</label>
+                    <input type="file" id="importJson" class="hiddenInput" />
                 </div>
                 <div class="buttonContainer">
                     <button id="exportJson">Export playlist (as JSON)</button>

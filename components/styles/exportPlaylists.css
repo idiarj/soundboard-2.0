@@ -1,14 +1,13 @@
 .modalSection {
     display: grid;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     margin: 0 auto;
-    height: 200px;
-    width: 500px;
+    width: 400px;
     text-align: center;
-    position: relative; /* Añadido para posicionar el botón de cerrar */
+    position: relative;
     justify-self: center;
 }
 
@@ -18,17 +17,48 @@
     margin-bottom: 20px;
 }
 
-.exportButton {
+.modalSection select {
+    width: 100%;
     padding: 10px;
-    background-color: #007bff;
-    color: white;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.modalSection button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
     border: none;
     border-radius: 4px;
-    font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
+.closeButton {
+    background-color: #dc3545;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.closeButton:hover {
+    background-color: #c82333;
+}
+
+.closeButton:active {
+    background-color: #bd2130;
+}
+
+.exportButton {
+    background-color: #007bff;
+}
+
 .exportButton:hover {
     background-color: #0056b3;
+}
+
+.exportButton:active {
+    background-color: #004494;
 }

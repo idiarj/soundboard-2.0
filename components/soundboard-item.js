@@ -60,10 +60,10 @@ class soundboard_item extends HTMLElement {
     async updateFavoritoImage() {
         const img = this.shadowRoot.querySelector('.favorito-img');
         setTimeout(async () => {
-            console.log(this)
-            console.log(this.getAttribute('song-id'))
+            //console.log(this)
+            //console.log(this.getAttribute('song-id'))
             const esFavorito = await isFavorite({ songId: this.getAttribute('song-id') });
-            console.log(esFavorito)
+            //console.log(esFavorito)
             img.src = esFavorito ? favorito : noFavorito; 
         }, 100);
     }
@@ -73,7 +73,7 @@ class soundboard_item extends HTMLElement {
         img.addEventListener('click', () => {
             this.favorito = !this.favorito;
             this.updateFavoritoImage();
-            console.log(`favorito: ${this.favorito}`);
+            //console.log(`favorito: ${this.favorito}`);
             toggleFavorite({ songId: this.getAttribute('song-id') });
             setTimeout(() => {
                 alert('Canción agregada a favoritos');
