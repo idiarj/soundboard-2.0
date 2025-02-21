@@ -5,7 +5,7 @@
 }
 
 .modal{
-    display: none;
+    visibility: hidden;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -15,8 +15,11 @@
     overflow: auto;
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
 }
 
 .show{
-    display: block;
+    display: grid;
+    visibility: visible;
 }

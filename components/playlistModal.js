@@ -3,18 +3,20 @@ class PlaylistModal extends HTMLElement {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(this.#getTemplate().content.cloneNode(true));
+        this.#loadStyles();
     }
 
 
     #getTemplate(){
         const template = document.createElement('template');
         template.innerHTML = `
-            <section class="modalSection>
-                <h2>Crear Playlist</h2>
+            <section class="modalSection">
+                <h2>Create a playlist</h2>
                 <form>
-                    <input type="text" name="name" placeholder="Nombre de la playlist">
-                    <button>Crear</button>
+                    <input type="text" name="name" placeholder="New playlist name">
+                    <button class="createButton">Create</button>
                 </form>
+                <button class="closeButton">Close</button>
             </section>
         `;
         return template;
@@ -22,7 +24,7 @@ class PlaylistModal extends HTMLElement {
 
 
     #loadStyles(){
-        const link = document.creatpleElement('link');
+        const link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
         link.setAttribute('href', './components/styles/playlistModal.css');
         this.shadowRoot.appendChild(link);

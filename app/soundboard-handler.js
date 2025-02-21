@@ -13,11 +13,11 @@ playlists.forEach(playlist => {
 });
 
 const topBar = document.querySelector('top-bar');
-console.log(topBar.shadowRoot.querySelector('.addSongButton'));
-console.log(topBar.shadowRoot.querySelector('.createPlaylistButton'));
+console.log(topBar.shadowRoot.querySelector('#addSongButton'));
+console.log(topBar.shadowRoot.querySelector('#createPlaylistButton'));
 
-const addSongButton = topBar.shadowRoot.querySelector('.addSongButton');
-const createPlaylistButton = topBar.shadowRoot.querySelector('.createPlaylistButton');
+const addSongButton = topBar.shadowRoot.querySelector('#addSongButton');
+const createPlaylistButton = topBar.shadowRoot.querySelector('#createPlaylistButton');
 
 addSongButton.addEventListener('click', () => {
     console.log('add song');
@@ -28,4 +28,14 @@ createPlaylistButton.addEventListener('click', () => {
     const playlistModal = document.querySelector('playlist-modal');
     playlistModal.classList.toggle('show');
 });
+
+const playlistModal = document.querySelector('playlist-modal');
+const closeModalButton = playlistModal.shadowRoot.querySelector('.closeButton');
+
+closeModalButton.addEventListener('click', () => {
+    playlistModal.classList.remove('show');
+})
+
+
+
 console.log(playlists);

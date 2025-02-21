@@ -11,9 +11,12 @@ class PlaylistButton extends HTMLElement {
     #getTemplate(){
         const template = document.createElement('template');
         template.innerHTML = `
+        <div class="buttonContainer">
             <button class="playlistButton">
                 <slot></slot>
             </button>
+        </div>
+
         `;
         return template;
     }   

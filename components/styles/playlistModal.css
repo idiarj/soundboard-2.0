@@ -1,11 +1,15 @@
 .modalSection {
+    display: grid;
     background-color: #f9f9f9;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    max-width: 400px;
     margin: 0 auto;
+    height: 200px;
+    width: 500px;
     text-align: center;
+    position: relative; /* Añadido para posicionar el botón de cerrar */
+    justify-self: center;
 }
 
 .modalSection h2 {
@@ -27,7 +31,7 @@
     font-size: 16px;
 }
 
-.modalSection button {
+.createButton {
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -38,6 +42,28 @@
     transition: background-color 0.3s ease;
 }
 
-.modalSection button:hover {
+.createButton:hover {
     background-color: #0056b3;
+}
+
+.closeButton {
+    background-color: #dc3545;
+    position: absolute; /* Añadido para posicionar el botón de cerrar */
+    top: 10px; /* Ajusta según sea necesario */
+    right: 10px; /* Ajusta según sea necesario */
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.closeButton:hover {
+    background-color: #c82333;
+}
+
+.closeButton:active {
+    background-color: #bd2130;
 }
