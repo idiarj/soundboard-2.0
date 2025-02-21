@@ -1,4 +1,5 @@
 import { indexedDB } from "../database/indexedDB.js";
+import { generateUniqueId } from "../utils/generateId.js";
 
 const soundboardDB = new indexedDB('soundboardDB');
 
@@ -13,9 +14,9 @@ export async function createFirstPlayList(){
     }, store: 'playlist'})
 }
 
-export function createNewPlaylist({id, nombre, songs}){
+export function createNewPlaylist({nombre, songs = []}){
     soundboardDB.addRecord({data: {
-        id,
+        id: generateUniqueId(),
         nombre,
         songs
     }, store: 'playlist'})
@@ -35,6 +36,7 @@ export function addNewSong({name, src}){
 
 export function addSongToPlaylist({playlistId, songId}){
     soundboardDB.getRecordById({id: playlistId, store: 'playlist'}).then(playlist => {
+        console.log(`Se añadió la canción ${songId} a la playlist ${playlist}`);
         playlist.songs.push(songId);
         //soundboardDB.addRecord({data: playlist, store: 'playlist'});
     })

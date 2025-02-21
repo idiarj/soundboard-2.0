@@ -12,13 +12,13 @@ class TopBar extends HTMLElement {
             <header>
                 <h1>Soundboard</h1>
                 <div class="buttonContainer">
-                    <button id="addSongButton">Add song</button>
+                    <input type="file" id="addSongButton" class="styledButton" />
                 </div>
                 <div class="buttonContainer">
                     <button id="createPlaylistButton">Create new playlist</button>
                 </div>
                 <div class="buttonContainer">
-                    <button id="createPlaylistButton">Change wallpaper</button>
+                    <button id="changeWallpaperButton">Change wallpaper</button>
                 </div>
                 <div class="buttonContainer">
                     <button id="importJson">Import playlist (as JSON)</button>

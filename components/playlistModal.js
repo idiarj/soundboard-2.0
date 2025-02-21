@@ -12,7 +12,7 @@ class PlaylistModal extends HTMLElement {
         template.innerHTML = `
             <section class="modalSection">
                 <h2>Create a playlist</h2>
-                <form>
+                <form class="playlistForm">
                     <input type="text" name="name" placeholder="New playlist name">
                     <button class="createButton">Create</button>
                 </form>

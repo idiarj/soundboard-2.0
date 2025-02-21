@@ -1,23 +1,34 @@
-import { createFirstPlayList, getPlaylist } from "./soundboard-logic.js";
+import { createFirstPlayList, getPlaylist, createNewPlaylist } from "./soundboard-logic.js";
+
+const playlistModal = document.querySelector('playlist-modal');
+const topBar = document.querySelector('top-bar');
+
+const topShadowRoot = topBar.shadowRoot;
+const playlistModalShadowRoot = playlistModal.shadowRoot;
+
+const addSongButton = topShadowRoot.querySelector('#addSongButton');
+const createPlaylistButton = topShadowRoot.querySelector('#createPlaylistButton');
+const closeModalButton = playlistModalShadowRoot.querySelector('.closeButton');
+const formModal = playlistModalShadowRoot.querySelector('.playlistForm');
+
+const appContainer = document.querySelector('.appContainer')
 
 createFirstPlayList();
 const playlists = await getPlaylist();
 
+
+console.log(topBar.shadowRoot.querySelector('#addSongButton'));
+console.log(topBar.shadowRoot.querySelector('#createPlaylistButton'));
+console.log(appContainer);
+console.log(playlists);
+
+
 playlists.forEach(playlist => {
     const playlistButton = document.createElement('playlist-button');
-    const appContainer = document.querySelector('.appContainer')
-    console.log(appContainer);
     playlistButton.textContent = playlist.nombre;
     appContainer.appendChild(playlistButton);
 
 });
-
-const topBar = document.querySelector('top-bar');
-console.log(topBar.shadowRoot.querySelector('#addSongButton'));
-console.log(topBar.shadowRoot.querySelector('#createPlaylistButton'));
-
-const addSongButton = topBar.shadowRoot.querySelector('#addSongButton');
-const createPlaylistButton = topBar.shadowRoot.querySelector('#createPlaylistButton');
 
 addSongButton.addEventListener('click', () => {
     console.log('add song');
@@ -25,17 +36,19 @@ addSongButton.addEventListener('click', () => {
 
 createPlaylistButton.addEventListener('click', () => {
     console.log('create playlist');
-    const playlistModal = document.querySelector('playlist-modal');
     playlistModal.classList.toggle('show');
 });
-
-const playlistModal = document.querySelector('playlist-modal');
-const closeModalButton = playlistModal.shadowRoot.querySelector('.closeButton');
 
 closeModalButton.addEventListener('click', () => {
     playlistModal.classList.remove('show');
 })
 
+formModal.addEventListener('submit', (e) => {
+    //e.preventDefault();
+    console.log('submit');
+    console.log(formModal.name.value);
+    createNewPlaylist({nombre: formModal.name.value});
+    playlistModal.classList.remove('show');
+    formModal.reset();
+})
 
-
-console.log(playlists);

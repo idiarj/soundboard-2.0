@@ -18,7 +18,7 @@ h1 {
     gap: 10px;
 }
 
-button {
+button, .styledButton {
     padding: 10px 20px;
     font-size: 16px;
     color: #fff;
@@ -29,12 +29,12 @@ button {
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-button:hover {
+button:hover, .styledButton:hover {
     background-color: #0056b3;
     transform: scale(1.05);
 }
 
-button:active {
+button:active, .styledButton:active {
     background-color: #004494;
     transform: scale(1);
 }
