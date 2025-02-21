@@ -1,37 +1,47 @@
-import { createFirstPlayList, getPlaylist, createNewPlaylist } from "./soundboard-logic.js";
+import { createFirstPlayList, 
+    getPlaylists, 
+    createNewPlaylist, 
+    addNewSong,
+    getPlaylistSongs } from "./soundboard-logic.js";
 
 const playlistModal = document.querySelector('playlist-modal');
 const topBar = document.querySelector('top-bar');
+const appContainer = document.querySelector('.appContainer');
+const playlistButtons = document.querySelector('section playlist-button');
+console.log(playlistButtons);
 
 const topShadowRoot = topBar.shadowRoot;
 const playlistModalShadowRoot = playlistModal.shadowRoot;
 
-const addSongButton = topShadowRoot.querySelector('#addSongButton');
 const createPlaylistButton = topShadowRoot.querySelector('#createPlaylistButton');
 const closeModalButton = playlistModalShadowRoot.querySelector('.closeButton');
 const formModal = playlistModalShadowRoot.querySelector('.playlistForm');
+const inputSong = topShadowRoot.querySelector('.buttonContainer .hiddenInput');
 
-const appContainer = document.querySelector('.appContainer')
+const playlistButtonContainer = document.querySelector('.playlistButtonContainer')
 
 createFirstPlayList();
-const playlists = await getPlaylist();
+const playlists = await getPlaylists();
 
 
 console.log(topBar.shadowRoot.querySelector('#addSongButton'));
 console.log(topBar.shadowRoot.querySelector('#createPlaylistButton'));
-console.log(appContainer);
+console.log(playlistButtonContainer);
 console.log(playlists);
 
 
-playlists.forEach(playlist => {
+playlists.forEach(async (playlist) => {
     const playlistButton = document.createElement('playlist-button');
+    console.log(playlist);
     playlistButton.textContent = playlist.nombre;
-    appContainer.appendChild(playlistButton);
-
-});
-
-addSongButton.addEventListener('click', () => {
-    console.log('add song');
+    playlistButton.setAttribute('playlist-id', playlist.id);
+    const songs = await getPlaylistSongs({playlistId: playlist.id});
+    console.log(songs)
+    songs.forEach(song => {
+        console.log(song);
+        // const songButton = document.createElement('soundboard-item');
+    })
+    playlistButtonContainer.appendChild(playlistButton);
 });
 
 createPlaylistButton.addEventListener('click', () => {
@@ -51,4 +61,26 @@ formModal.addEventListener('submit', (e) => {
     playlistModal.classList.remove('show');
     formModal.reset();
 })
+
+
+console.log(inputSong);
+
+
+inputSong.addEventListener('change', (e) => {
+    let data;
+    console.log('change');
+    console.log(e.target.files);
+    const file = e.target.files[0];
+    const fileNameWithoutExtension = file.name.replace(/\.[^/.]+$/, ""); // Quitar la extensión
+    console.log(fileNameWithoutExtension);
+    const reader = new FileReader();
+    reader.onload = (e) => {
+        data = e.target.result;
+        console.log(data)
+        addNewSong({name: fileNameWithoutExtension, src: data});
+        console.log('Song added');
+    }
+    reader.readAsDataURL(file);
+
+});
 

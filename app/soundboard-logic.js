@@ -39,16 +39,27 @@ export function addNewSong({name, src}){
 
 export function addSongToPlaylist({playlistId, songId}){
     soundboardDB.getRecordById({id: playlistId, store: 'playlist'}).then(playlist => {
+        console.log(playlist.songs);
         console.log(`Se añadió la canción ${songId} a la playlist ${playlist}`);
         playlist.songs.push(songId);
+        console.log(playlist);
+        soundboardDB.updateRecord({data: playlist, store: 'playlist'});
         //soundboardDB.addRecord({data: playlist, store: 'playlist'});
     })
 }
 
-export async function getPlaylist(){
-    const playlist = await soundboardDB.getRecords({store: 'playlist'});
-    console.log(playlist);
-    return playlist;
+export async function getPlaylists(){
+    const playlists = await soundboardDB.getRecords({store: 'playlist'});
+    console.log(playlists);
+    return playlists;
+}
+
+export async function getPlaylistSongs({playlistId}){
+    const playlist = await soundboardDB.getRecordById({id: playlistId, store: 'playlist'});
+    const songs = playlist.songs.map(async (songId) => {
+        return await soundboardDB.getRecordById({id: songId, store: 'sounds'});
+    })
+    return songs;
 }
 
 

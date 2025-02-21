@@ -61,4 +61,15 @@ export class indexedDB {
             throw error;
         }
     }
+
+    async updateRecord({data, store}){
+        try {
+            await this.initPromise;
+            await this.db.put(store, data);
+            console.log('Record updated in the database');
+        } catch (error) {
+            console.error('Error updating record in the database', error);
+            throw error;
+        }
+    }
 }

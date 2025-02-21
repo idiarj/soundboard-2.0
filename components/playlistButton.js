@@ -33,8 +33,8 @@ class PlaylistButton extends HTMLElement {
         const playlistButton = this.shadowRoot.querySelector('.playlistButton');
         playlistButton.addEventListener('click', () => {
             // Ocultar todas las playlists
-            console.log(document.querySelectorAll('.appContainer'));
-            document.querySelectorAll('.appContainer').forEach(container => {
+            console.log(document.querySelectorAll('.playlistButtonContainer'));
+            document.querySelectorAll('.playlistButtonContainer').forEach(container => {
                 console.log('hola')
                 console.log(container);
                 console.log(container.shadowRoot);

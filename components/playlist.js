@@ -10,22 +10,7 @@ class Playlist extends HTMLElement {
     #getTemplate(){
         const template = document.createElement('template');
         template.innerHTML = `
-            <button class="playlistButton">
-                <slot></slot>
-            </button>
             <div class="songsContainer">
-            <soundboard-item>
-                Audio 1
-            </soundboard-item>
-            <soundboard-item>
-                Audio 2
-            </soundboard-item>
-            <soundboard-item>
-                Audio 3
-            </soundboard-item>
-            <soundboard-item>
-                Audio 4
-            </soundboard-item>
             </div>
         `;
         return template;
@@ -60,7 +45,7 @@ class Playlist extends HTMLElement {
 
 
     loadSongs(){
-        const id = this.getAttribute('id');
+        const id = this.getAttribute('playlist-id');
 
     }
 }
