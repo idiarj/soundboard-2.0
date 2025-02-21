@@ -1,17 +1,20 @@
-class Playlist extends HTMLElement {
-    constructor(){
+class exportPlaylist extends HTMLElement {
+    constructor() {
         super();
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(this.#getTemplate().content.cloneNode(true));
         this.#loadStyles();
-
+        //this.#addEventListeners();
     }
 
-    #getTemplate(){
+    #getTemplate() {
         const template = document.createElement('template');
         template.innerHTML = `
-            <div class="songsContainer">
-            </div>
+            <section class="modalSection">
+                <h2>Export a playlist</h2>
+                <select></select>
+                <button class="exportButton">Export</button>
+            </section>
         `;
         return template;
     }
@@ -19,12 +22,9 @@ class Playlist extends HTMLElement {
     #loadStyles(){
         const link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
-        link.setAttribute('href', './components/styles/playlist.css');
+        link.setAttribute('href', './components/styles/export-playlist.css');
         this.shadowRoot.appendChild(link);
     }
-
-
 }
 
-
-export default Playlist;
+export default exportPlaylist;

@@ -11,6 +11,7 @@ const topBar = document.querySelector('top-bar');
 const playlistButtonsContainer = document.querySelector('.playlistButtonContainer');
 const playlistContainer = document.querySelector('playlist-container');
 
+
 console.log(playlistButtonsContainer);
 
 const topShadowRoot = topBar.shadowRoot;
@@ -28,24 +29,25 @@ const playlists = await getPlaylists();
 for (const playlist of playlists) {
     const playlistButton = document.createElement('playlist-button');
     const playlistContainer = document.createElement('playlist-container');
-    //console.log(playlist);
+    setTimeout(() => {
+        playlistButtonsContainer.appendChild(playlistButton);
+    }, 10);
+
+
     playlistButton.textContent = playlist.nombre;
     playlistButton.setAttribute('playlist-id', playlist.id);
 
     playlistContainer.setAttribute('id', playlist.id);
-
+    body.appendChild(playlistContainer);
     const songs = await getPlaylistSongs({playlistId: playlist.id});
-    //console.log(songs)
+
     songs.forEach(song => {
-        //console.log(song);
         const songButton = document.createElement('soundboard-item');
         songButton.textContent = song.name;
         songButton.setAttribute('song-id', song.id);
         songButton.shadowRoot.querySelector('audio').setAttribute('src', song.src);
         playlistContainer.shadowRoot.querySelector('div').appendChild(songButton);
     })
-    body.appendChild(playlistContainer);
-    playlistButtonsContainer.appendChild(playlistButton);
 }
 
 // Llama a esta función después de que se hayan agregado los botones de la playlist

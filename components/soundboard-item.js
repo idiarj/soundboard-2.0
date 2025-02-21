@@ -1,4 +1,4 @@
-import { getPlaylists, addSongToPlaylist, toggleFavorite } from "../app/soundboard-logic.js";
+import { getPlaylists, addSongToPlaylist, toggleFavorite, isFavorite } from "../app/soundboard-logic.js";
 const favorito = '../assets/favorito.png';
 const noFavorito = '../assets/no_favorito.png';
 
@@ -21,7 +21,8 @@ class soundboard_item extends HTMLElement {
                 <h1><slot></slot></h1>
                 <audio src="" controls></audio>
                 <select></select>
-                <button class="add-button">Añadir a la playlist</button>
+                <button class="add-button">Add to playlist</button>
+                <!--<button class="delete-button">Delete from this playlist</button>-->  
                 <img class="favorito-img" src="" alt="favorito">
             </div>
         `;
@@ -56,9 +57,15 @@ class soundboard_item extends HTMLElement {
         }
     }
 
-    updateFavoritoImage() {
+    async updateFavoritoImage() {
         const img = this.shadowRoot.querySelector('.favorito-img');
-        img.src = this.favorito ? favorito : noFavorito;
+        setTimeout(async () => {
+            console.log(this)
+            console.log(this.getAttribute('song-id'))
+            const esFavorito = await isFavorite({ songId: this.getAttribute('song-id') });
+            console.log(esFavorito)
+            img.src = esFavorito ? favorito : noFavorito; 
+        }, 100);
     }
 
     #addEventListeners() {
@@ -68,6 +75,10 @@ class soundboard_item extends HTMLElement {
             this.updateFavoritoImage();
             console.log(`favorito: ${this.favorito}`);
             toggleFavorite({ songId: this.getAttribute('song-id') });
+            setTimeout(() => {
+                alert('Canción agregada a favoritos');
+                location.reload();
+            }, 150);
         });
 
         const select = this.shadowRoot.querySelector('select');
@@ -77,6 +88,7 @@ class soundboard_item extends HTMLElement {
             const playlistId = select.value;
             addSongToPlaylist({ songId, playlistId });
             alert('Canción agregada a la playlist');
+            location.reload();
         });
     }
 }

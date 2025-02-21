@@ -68,6 +68,13 @@ export function toggleFavorite({songId}) {
     })
 }
 
+export async function isFavorite({songId}) {
+    const song = await soundboardDB.getRecordById({id: songId, store: 'sounds'});
+    console.log('la cancion')
+    console.log(song);
+    return song.favorite;
+}
+
 
 export function addNewSong({name, src}){
     const songId = `song-${generateUniqueId()}`;
@@ -83,15 +90,13 @@ export function addNewSong({name, src}){
     addSongToPlaylist({playlistId: 'playlist0', songId});
 }
 
-export function addSongToPlaylist({playlistId, songId}){
+export function addSongToPlaylist({playlistId, songId}) {
     soundboardDB.getRecordById({id: playlistId, store: 'playlist'}).then(playlist => {
-        //console.log(playlist.songs);
-        console.log(`Se añadió la canción ${songId} a la playlist ${playlist}`);
         playlist.songs.push(songId);
-        //console.log(playlist);
-        soundboardDB.updateRecord({data: playlist, store: 'playlist'});
-        //soundboardDB.addRecord({data: playlist, store: 'playlist'});
-    })
+        soundboardDB.updateRecord({data: playlist, store: 'playlist'}).then(() => {
+            document.dispatchEvent(new CustomEvent('playlistUpdated', { detail: { playlistId } }));
+        });
+    });
 }
 
 export async function getPlaylists(){
@@ -110,7 +115,14 @@ export async function getPlaylistSongs({playlistId}){
     return songs;
 }
 
-
+export async function removeFromPlaylist({songId, playlistId}) {
+    soundboardDB.getRecordById({id: playlistId, store: 'playlist'}).then(playlist => {
+        playlist.songs = playlist.songs.filter(id => id !== songId);
+        soundboardDB.updateRecord({data: playlist, store: 'playlist'}).then(() => {
+            document.dispatchEvent(new CustomEvent('playlistUpdated', { detail: { playlistId } }));
+        });
+    });
+}
 
 // const record = await soundboardDB.getRecordById({id: 1, store: 'sounds'});
 // //console.log(record)

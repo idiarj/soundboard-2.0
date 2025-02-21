@@ -79,3 +79,26 @@
     background-color: #1e7e34;
     transform: scale(1);
 }
+
+.soundboard-item .delete-button {
+    grid-column: 2;
+    justify-self: start;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #a72828;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.soundboard-item .delete-button:hover {
+    background-color: #882121;
+    transform: scale(1.05);
+}
+
+.soundboard-item .delete-button:active {
+    background-color: #7e1e1e;
+    transform: scale(1);
+}
