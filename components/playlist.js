@@ -17,7 +17,7 @@ class Playlist extends HTMLElement {
     }
 
     #loadStyles(){
-        const link = document.creatpleElement('link');
+        const link = document.createElement('link');
         link.setAttribute('rel', 'stylesheet');
         link.setAttribute('href', './components/styles/playlist.css');
         this.shadowRoot.appendChild(link);
@@ -27,11 +27,11 @@ class Playlist extends HTMLElement {
     //     const playlistButton = this.shadowRoot.querySelector('.playlistButton');
     //     playlistButton.addEventListener('click', () => {
     //         // Ocultar todas las playlists
-    //         console.log(document.querySelectorAll('playlist-container .songsContainer'));
+    //         //console.log(document.querySelectorAll('playlist-container .songsContainer'));
     //         document.querySelectorAll('playlist-container').forEach(container => {
-    //             console.log('hola')
-    //             console.log(container);
-    //             console.log(container.shadowRoot);
+    //             //console.log('hola')
+    //             //console.log(container);
+    //             //console.log(container.shadowRoot);
     //             const shadowRootContainer = container.shadowRoot;
     //             const songsContainer = shadowRootContainer.querySelector('.songsContainer');
     //             songsContainer .classList.remove('show');

@@ -1,0 +1,81 @@
+.soundboard-item {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    grid-template-rows: auto auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.soundboard-item h1 {
+    font-size: 20px;
+    color: #343a40;
+    margin-bottom: 10px;
+    grid-column: 1 / -1;
+}
+
+.soundboard-item audio {
+    width: 100%;
+    border-radius: 4px;
+    grid-column: 1 / -1;
+}
+
+.soundboard-item select {
+    grid-column: 1;
+    justify-self: start;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #343a40;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.soundboard-item select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}
+
+.soundboard-item .favorito-img {
+    grid-column: 3;
+    justify-self: end;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.soundboard-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.soundboard-item .add-button {
+    grid-column: 2;
+    justify-self: start;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.soundboard-item .add-button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+.soundboard-item .add-button:active {
+    background-color: #1e7e34;
+    transform: scale(1);
+}
