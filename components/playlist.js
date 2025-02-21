@@ -4,7 +4,7 @@ class Playlist extends HTMLElement {
         this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(this.#getTemplate().content.cloneNode(true));
         this.#loadStyles();
-        this.showPlaylist();
+        //this.showPlaylist();
     }
 
     #getTemplate(){
@@ -32,31 +32,31 @@ class Playlist extends HTMLElement {
     }
 
     #loadStyles(){
-        const link = document.createElement('link');
+        const link = document.creatpleElement('link');
         link.setAttribute('rel', 'stylesheet');
         link.setAttribute('href', './components/styles/playlist.css');
         this.shadowRoot.appendChild(link);
     }
 
-    showPlaylist(){
-        const playlistButton = this.shadowRoot.querySelector('.playlistButton');
-        playlistButton.addEventListener('click', () => {
-            // Ocultar todas las playlists
-            console.log(document.querySelectorAll('playlist-container .songsContainer'));
-            document.querySelectorAll('playlist-container').forEach(container => {
-                console.log('hola')
-                console.log(container);
-                console.log(container.shadowRoot);
-                const shadowRootContainer = container.shadowRoot;
-                const songsContainer = shadowRootContainer.querySelector('.songsContainer');
-                songsContainer .classList.remove('show');
-            });
+    // showPlaylist(){
+    //     const playlistButton = this.shadowRoot.querySelector('.playlistButton');
+    //     playlistButton.addEventListener('click', () => {
+    //         // Ocultar todas las playlists
+    //         console.log(document.querySelectorAll('playlist-container .songsContainer'));
+    //         document.querySelectorAll('playlist-container').forEach(container => {
+    //             console.log('hola')
+    //             console.log(container);
+    //             console.log(container.shadowRoot);
+    //             const shadowRootContainer = container.shadowRoot;
+    //             const songsContainer = shadowRootContainer.querySelector('.songsContainer');
+    //             songsContainer .classList.remove('show');
+    //         });
 
-            // Mostrar la playlist actual
-            const songsContainer = this.shadowRoot.querySelector('.songsContainer');
-            songsContainer.classList.toggle('show');
-        });
-    }
+    //         // Mostrar la playlist actual
+    //         const songsContainer = this.shadowRoot.querySelector('.songsContainer');
+    //         songsContainer.classList.toggle('show');
+    //     });
+    // }
 
 
     loadSongs(){
