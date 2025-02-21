@@ -16,7 +16,7 @@ export async function createFirstPlayList(){
 
 export function createNewPlaylist({nombre, songs = []}){
     soundboardDB.addRecord({data: {
-        id: generateUniqueId(),
+        id: `playlist-${generateUniqueId()}`,
         nombre,
         songs
     }, store: 'playlist'})
@@ -24,14 +24,17 @@ export function createNewPlaylist({nombre, songs = []}){
 
 
 export function addNewSong({name, src}){
+    const songId = `song-${generateUniqueId()}`;
     soundboardDB.addRecord({
         data: {
-            id: name,
+            id: songId,
             name,
             src
         },
         store: 'sounds'
     })
+    console.log(`Se añadió la canción ${name} con id ${songId}`);
+    addSongToPlaylist({playlistId: 'playlist0', songId});
 }
 
 export function addSongToPlaylist({playlistId, songId}){

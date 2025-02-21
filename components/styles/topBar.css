@@ -38,3 +38,12 @@ button:active, .styledButton:active {
     background-color: #004494;
     transform: scale(1);
 }
+
+.hiddenInput {
+    display: none;
+}
+
+.styledButton {
+    display: inline-block;
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -12,7 +12,8 @@ class TopBar extends HTMLElement {
             <header>
                 <h1>Soundboard</h1>
                 <div class="buttonContainer">
-                    <input type="file" id="addSongButton" class="styledButton" />
+                    <label for="addSongButton" class="styledButton">Add a new song</label>
+                    <input type="file" id="addSongButton" class="hiddenInput" />
                 </div>
                 <div class="buttonContainer">
                     <button id="createPlaylistButton">Create new playlist</button>
